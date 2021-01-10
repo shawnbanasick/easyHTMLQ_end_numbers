@@ -364,6 +364,7 @@ li.disagree {
 html {
   position: relative;
   min-height: 100%;
+  overflow-y: scroll;
 }
 body {
   /* Margin bottom by footer height */

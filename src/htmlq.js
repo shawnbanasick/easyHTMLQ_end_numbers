@@ -266,7 +266,7 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
     $scope.configXml = configXml;
     $scope.duration = Duration;
 
-    var viewHeight = window.innerHeight - 375;
+    var viewHeight = window.innerHeight - 435;
     if (viewHeight < 60) {
         viewHeight = 60;
     }
