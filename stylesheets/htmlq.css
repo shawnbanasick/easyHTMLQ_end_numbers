@@ -303,13 +303,13 @@ li.disagree {
 }
 
 .grid {
-  width: 960px;
+  /* width: 960px; */
   margin: 30px auto 50px auto;
 }
 
 .grid table {
   table-layout: fixed;
-  width: 960px;
+  /* width: 960px; */
 }
 
 .grid td {
@@ -393,4 +393,19 @@ body {
 -------------------------------------------------- */
 .progressAdj {
   padding-top: 5px;
+}
+
+/* step2 custom sort grid centering - override bootstrap settings
+-------------------------------------------------- */
+.step2ContAdj {
+  margin-left: 50px !important;
+}
+
+.container {
+  width: 90vw !important;
+}
+
+.step1Table {
+  width: clamp(960px, 70vw, 1300px);
+  margin: 0 auto;
 }

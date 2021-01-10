@@ -267,15 +267,22 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
     $scope.duration = Duration;
 
     var viewHeight = window.innerHeight - 435;
-    if (viewHeight < 60) {
-        viewHeight = 60;
-    }
+    if (viewHeight < 60) {viewHeight = 60;};
+    if (viewHeight > 1000) {viewHeight = 1000;};
+
+    var totalGridWidth = window.innerWidth - 100;
+    if (totalGridWidth < 960) {totalGridWidth = 960;};
+    if (totalGridWidth > 1500) {totalGridWidth = 1500;};
+    console.log(totalGridWidth/ map.column.length);    
 
     var longestColumn = _.last(_.sortBy(map.column, function (column) {
         return parseInt(column.__text, 10);
     }));
 
     $scope.cellHeight = viewHeight / parseInt(longestColumn.__text, 10);
+    $scope.totalGridWidth = totalGridWidth;
+    $scope.totalGridWidthPx = `${totalGridWidth}px`;
+
 
     $scope.textAlignRight = (config.textAlign === 'right');
 
