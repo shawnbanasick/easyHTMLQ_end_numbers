@@ -1,10 +1,10 @@
 <div class="step2ContAdj" track-duration="duration[1]">
     <div id="step2" droppable-background="" on-drop="removeStatement($statement)">
-        <div class="row">
-            <div class="grid" ng-style="{width: totalGridWidth}">
+        <div class="row centerDiv">
+            <div class="grid" ng-style="{width:totalGridWidth}">
                 <table ng-style="{width: totalGridWidth}">
                     <tr class="grid-heading">
-                        <td ng-style={width:totalGridWidth} colspan="{{ map.column.length }}">
+                        <td ng-style="{width:totalGridWidth}" colspan="{{ map.column.length }}">
                             <span style="float: left;" ng-bind-html="language.btnDisagreement"></span>
                             <span style="float: right; text-align: right;" ng-bind-html="language.btnAgreement"></span>
                         </td>

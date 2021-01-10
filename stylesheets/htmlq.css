@@ -320,8 +320,8 @@ li.disagree {
 /* draggable helper */
 .draggable.dragging-onto-grid {
   border: 1px solid;
-  width: 100px;
-  height: 70px;
+  width: 150px !important;
+  height: 125px !important;
   padding: 2px;
   font-size: 1em;
   box-shadow: 10px 10px 5px #888888;
@@ -398,14 +398,18 @@ body {
 /* step2 custom sort grid centering - override bootstrap settings
 -------------------------------------------------- */
 .step2ContAdj {
-  margin-left: 50px !important;
+  margin: 0 auto;
 }
 
 .container {
-  width: 90vw !important;
+  width: clamp(960px, 95vw, 1300px);
 }
 
 .step1Table {
   width: clamp(960px, 70vw, 1300px);
+  margin: 0 auto;
+}
+
+.centerDiv {
   margin: 0 auto;
 }

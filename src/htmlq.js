@@ -272,7 +272,7 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
 
     var totalGridWidth = window.innerWidth - 100;
     if (totalGridWidth < 960) {totalGridWidth = 960;};
-    if (totalGridWidth > 1500) {totalGridWidth = 1500;};
+    if (totalGridWidth > 1300) {totalGridWidth = 1300;};
     console.log(totalGridWidth/ map.column.length);    
 
     var longestColumn = _.last(_.sortBy(map.column, function (column) {
@@ -616,6 +616,7 @@ angular.module('app', ['ui.router', 'ui.bootstrap'])
             if (!scope.cloneOnDrag || scope.cloneOnDrag()) {
                 options.helper = function (event) {
                     var ret = $(this).clone().addClass('dragging-onto-grid');
+                    console.log("dragging");
                     if (scope.smallFont && scope.smallFont() === 'true') {
                         ret.addClass('small-font')
                     }
