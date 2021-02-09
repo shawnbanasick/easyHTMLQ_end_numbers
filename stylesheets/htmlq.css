@@ -16,10 +16,11 @@ body {
   width: 300px;
   height: 200px;
   padding: 12px;
-  font-size: 1.5em;
+  font-size: 1em;
   box-shadow: 6px 6px 5px #888888;
   background-color: white;
   z-index: 999;
+  text-align: center;
 
   /* http://maettig.com/code/css/text-overflow-ellipsis.html */
   overflow: hidden; /* required for text-overflow */
@@ -50,6 +51,8 @@ li.draggable {
   height: 100%;
 }
 
+/* step #2 sorting grid css 
+--------------------------------------------------*/
 .cell .swappable > div,
 .cell .draggable-small > div {
   width: 100%;
@@ -60,12 +63,17 @@ li.draggable {
   text-overflow: ellipsis; /* for IE and WebKit (Safari, Chrome) */
   -o-text-overflow: ellipsis;
   padding: 3px;
+  text-align: center;
 }
 
 .cell.small-font .swappable > div,
 .cell.small-font .draggable-small > div {
   font-size: 0.8em;
   line-height: 1em;
+}
+
+.heroCard {
+  font-size: 1.5em;
 }
 
 .droppable-active {
@@ -87,14 +95,18 @@ p.card-counter {
   font-size: 5em;
 }
 
-/* 3-column-view (disagree, agree, neutral) */
+/* step #1  -  3-column-view cards css (disagree, agree, neutral) 
+----------------------------------------------------------*/
 .sorted-statements {
   background-color: #d8d8d8;
   padding-top: 2px;
   padding-bottom: 5px;
-  margin-left: 0px;
-  margin-right: 0px;
+  width: 960px;
+  margin: 0 auto;
+  height: 400px;
   min-height: 160px;
+  max-height: 600px;
+  text-align: center;
 }
 
 .sorted-statements p.heading {
@@ -103,6 +115,7 @@ p.card-counter {
   font-size: 1.5em;
   font-weight: bolder;
 }
+
 
 .sortable .overlay {
   position: relative;
@@ -118,23 +131,23 @@ p.card-counter {
   display: block;
 }
 
-/* styles for disagree-neutral-agree pre-sort stack at bottom of sort page
+/* styles for disagree-neutral-agree containers 
+pre-sort stack at bottom of step #1 (see above for gray container)
 -------------------------------------------------- */
 .sorted-statements .sortable {
+  height: 325px;
   background-color: white;
   border: 1px solid;
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 0;
-  height: 17vh;
-  font-size: 0.8em;
 }
 
 /* styles for disagree-neutral-agree pre-sort stack at bottom of sort page
-   step 1 custom height
+   step #1 custom height
 -------------------------------------------------- */
-.step1 {
-  height: 35vh !important;
+#step1 {
+  height: 700px;
 }
 
 .sorted-statements ul {
@@ -204,6 +217,14 @@ li.disagree {
 .sorted-statements .next-button {
   padding-top: 50px;
   padding-bottom: 50px;
+}
+
+.step3Feeder {
+  height: 150px;
+}
+
+#step3 {
+  padding-right: 10px;
 }
 
 #step4 div.comment-heading {
@@ -300,28 +321,40 @@ li.disagree {
   padding-top: 3px;
   padding-bottom: 3px;
   font-weight: bold;
+  text-align: center;
 }
 
 .grid {
-  /* width: 960px; */
-  margin: 30px auto 50px auto;
+  /* width: 1260px; */
+  margin: 30px auto 30px auto;
 }
 
 .grid table {
   table-layout: fixed;
-  /* width: 960px; */
+  /* width: 1260px; */
+  /* border: 2px solid red; */
+  margin: 0 auto;
 }
 
+/* @media screen and (max-width: 992px) {
+  .column {
+    width: 50%;
+  }
+} */
+
+/* step #2 font size
+---------------------------------*/
 .grid td {
   vertical-align: top;
   padding: 0;
+  font-size: 1.2em;
 }
 
 /* draggable helper */
 .draggable.dragging-onto-grid {
   border: 1px solid;
-  width: 150px !important;
-  height: 125px !important;
+  width: 100px;
+  height: 70px;
   padding: 2px;
   font-size: 1em;
   box-shadow: 10px 10px 5px #888888;
@@ -341,7 +374,7 @@ li.disagree {
   position: absolute;
   top: 0;
   left: 0;
-  font-size: 2em;
+  font-size: 0.6em;
   font-weight: bolder;
   text-align: center;
   background-color: rgb(200, 200, 200);
@@ -364,21 +397,21 @@ li.disagree {
 html {
   position: relative;
   min-height: 100%;
-  overflow-y: scroll;
 }
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 50px;
+  margin-bottom: 60px;
+  height: 100%;
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 50px;
+  height: 60px;
   background-color: #f5f5f5;
 
-  padding-top: 8px;
+  padding-top: 15px;
 }
 
 /* new statement number styles
@@ -395,21 +428,57 @@ body {
   padding-top: 5px;
 }
 
-/* step2 custom sort grid centering - override bootstrap settings
+/* step #2 custom sort grid centering - override bootstrap settings
 -------------------------------------------------- */
 .step2ContAdj {
   margin: 0 auto;
 }
 
 .container {
-  width: clamp(960px, 95vw, 1300px);
+/* margin-left: 20px; */
+margin: 0 auto;
+/* border: 2px solid purple; */
 }
 
 .step1Table {
-  width: clamp(960px, 70vw, 1300px);
+  width: 70vw;
+  min-width: 960px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
 .centerDiv {
   margin: 0 auto;
 }
+
+/* step #2 feeder height
+---------------------------------------------*/
+#step2 > div.row.sorted-statements {
+  height: 150px;
+  width: 960px;
+  margin: 0 auto;
+}
+
+.step2col {
+  height: 150px;
+  overflow: hidden;
+}
+
+
+/* 
+.innerCard {
+  /* display: flex;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center; 
+}
+
+.outerCard {
+  display: table-cell;
+  vertical-align: middle;
+  overflow: hidden;  
+} 
+*/
