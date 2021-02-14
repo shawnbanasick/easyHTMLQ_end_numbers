@@ -338,55 +338,63 @@ li.disagree {
 
 /* step #2 and step #3 font size
 ---------------------------------*/
-
-@media screen and (min-height: 220px), screen and (max-height: 719px) {
-  .grid td {
-    vertical-align: top;
-    padding: 0;
-    font-size: 10px;
-    /* font-size: 0.8vh; */
-  }
-}
-
-@media screen and (min-height: 720px) {
-  .grid td {
-    vertical-align: top;
-    padding: 0;
-    font-size: 11px;
-    /* font-size: 1.4vh; */
-  }
-}
-@media screen and (min-height: 900px) {
-  .grid td {
-    vertical-align: top;
-    padding: 0;
-    font-size: 14px;
-    /* font-size: 1.4vh; */
-  }
-}
-
-@media screen and (min-height: 1080px) {
-  .grid td {
-    vertical-align: top;
-    padding: 0;
-    font-size: 16px;
-    /* font-size: 1.2vh; */
-  }
-}
-/* @media screen and (min-height: 1440px) {
+/* for 2160px */
+@media (min-height: 1908px) {
   .grid td {
     vertical-align: top;
     padding: 0;
     font-size: 18px;
   }
 }
-@media screen and (min-height: 2160px) {
+
+/* for 1440px */
+@media (min-height: 1188px) and (max-height: 1907px) {
   .grid td {
     vertical-align: top;
     padding: 0;
-    font-size: 20px;
+    font-size: 16px;
   }
-} */
+}
+
+/* for 1080 */
+@media (min-height: 828px) and (max-height: 1187px) {
+  .grid td {
+    vertical-align: top;
+    padding: 0;
+    font-size: 14px;
+    /* font-size: 1.2vh; */
+  }
+}
+
+/* for 900px */
+@media (min-height: 818px) and (max-height: 827px) {
+  .grid td {
+    vertical-align: top;
+    padding: 0;
+    font-size: 13px;
+    /* font-size: 1.4vh; */
+  }
+}
+
+/* for 720 */
+@media (min-height: 655px) and (max-height: 817px) {
+  .grid td {
+    vertical-align: top;
+    padding: 0;
+    font-size: 12px;
+    /* font-size: 1.4vh; */
+  }
+}
+
+/* for lowest */
+@media (min-height: 120px) and (max-height: 654px) {
+  .grid td {
+    vertical-align: top;
+    padding: 0;
+    font-size: 11px;
+    /* font-size: 0.8vh; */
+  }
+}
 
 .grid-heading {
   display: flex;
@@ -538,7 +546,4 @@ body {
   margin-top: 25px;
   margin-bottom: 25px;
 }
-
-
-
   
