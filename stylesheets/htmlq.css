@@ -1,4 +1,5 @@
-.col-centered {
+
+  .col-centered {
   float: none;
   margin: 0 auto;
 }
@@ -112,10 +113,9 @@ p.card-counter {
 .sorted-statements p.heading {
   margin-bottom: 5px;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.4em;
   font-weight: bolder;
 }
-
 
 .sortable .overlay {
   position: relative;
@@ -307,12 +307,6 @@ li.disagree {
   padding-top: 30px;
 }
 
-.grid-heading {
-  font-size: 1.7em;
-  color: gray;
-  font-weight: bold;
-}
-
 .grid .rating {
   text-align: center;
   font-size: 1.2em;
@@ -326,7 +320,7 @@ li.disagree {
 
 .grid {
   /* width: 1260px; */
-  margin: 30px auto 30px auto;
+  margin: 10px auto 10px auto;
 }
 
 .grid table {
@@ -342,12 +336,85 @@ li.disagree {
   }
 } */
 
-/* step #2 font size
+/* step #2 and step #3 font size
 ---------------------------------*/
-.grid td {
-  vertical-align: top;
-  padding: 0;
-  font-size: 1.5vh;
+
+@media screen and (min-height: 220px), screen and (max-height: 719px) {
+  .grid td {
+    vertical-align: top;
+    padding: 0;
+    font-size: 10px;
+    /* font-size: 0.8vh; */
+  }
+}
+
+@media screen and (min-height: 720px) {
+  .grid td {
+    vertical-align: top;
+    padding: 0;
+    font-size: 11px;
+    /* font-size: 1.4vh; */
+  }
+}
+@media screen and (min-height: 900px) {
+  .grid td {
+    vertical-align: top;
+    padding: 0;
+    font-size: 14px;
+    /* font-size: 1.4vh; */
+  }
+}
+
+@media screen and (min-height: 1080px) {
+  .grid td {
+    vertical-align: top;
+    padding: 0;
+    font-size: 16px;
+    /* font-size: 1.2vh; */
+  }
+}
+/* @media screen and (min-height: 1440px) {
+  .grid td {
+    vertical-align: top;
+    padding: 0;
+    font-size: 18px;
+  }
+}
+@media screen and (min-height: 2160px) {
+  .grid td {
+    vertical-align: top;
+    padding: 0;
+    font-size: 20px;
+  }
+} */
+
+.grid-heading {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* "Disagree  Agree" text for table heading */
+.tableLabelText {
+  font-size: 1.5em !important;
+  color: gray;
+  font-weight: bold;
+}
+
+.tableLableCenterText {
+  margin: 0 auto;
+  font-size: 1.5em !important;
+  color: white;
+}
+/* Conditions of Instruction - editable from config.xml 
+--------------------------------------------------*/
+.tableLableCenterTextDiv {
+  background-color: black;
+  padding-right: 5px;
+  padding-left: 5px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  /* display: none; */
 }
 
 /* draggable helper */
@@ -385,12 +452,12 @@ li.disagree {
   display: block;
 }
 
-#wrap {
+/* #wrap {
   min-height: 100%;
   height: auto !important;
   height: 100%;
   margin: 0 auto -60px;
-}
+} */
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -416,10 +483,13 @@ body {
 
 /* new statement number styles
 -------------------------------------------------- */
+/*write test */
+
 .idNum {
-  margin-left: 10px;
-  font-size: 12px;
+  margin-right: 5px;
+  font-size: 70%;
   opacity: 0.5;
+  display: none;
 }
 
 /* custom help button css - override bootstrap settings
@@ -435,9 +505,9 @@ body {
 }
 
 .container {
-/* margin-left: 20px; */
-margin: 0 auto;
-/* border: 2px solid purple; */
+  /* margin-left: 20px; */
+  margin: 0 auto;
+  /* border: 2px solid purple; */
 }
 
 .step1Table {
@@ -464,21 +534,11 @@ margin: 0 auto;
   overflow: hidden;
 }
 
-
-/* 
-.innerCard {
-  /* display: flex;
-  height: 100%;
-  width: 100%;
-  margin: auto;
-  text-align: center;
-  justify-content: center;
-  align-items: center; 
+.userNameDiv {
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
-.outerCard {
-  display: table-cell;
-  vertical-align: middle;
-  overflow: hidden;  
-} 
-*/
+
+
+  

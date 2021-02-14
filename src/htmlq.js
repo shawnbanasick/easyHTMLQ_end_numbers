@@ -65,7 +65,7 @@ angular
       $stateProvider
         .state("error", {
           template:
-            '<div class="container"><div class="row" style="margin-top: 35px;"><div class="col-xs-8 col-xs-offset-2 alert alert-danger"><p>An error occured while opening your survey. If you tried to open index.html via the file:// protocol, please use Firefox or another browser that allows XML HTTP Requests to local files.</p></div></div></div>',
+            '<div class="container"><div class="row" style="margin-top: 35px;"><div class="col-xs-8 col-xs-offset-2 alert alert-danger"><p>An error occured while opening your survey. Due to improved browser security measures, it is no longer possible to view these files by double clicking on index.html. To view and test your file setup, please use Easy HTMLQ Configurator.</p></div></div></div>',
         })
         .state("root", {
           abstract: true,
@@ -395,22 +395,19 @@ angular
       $scope.duration = Duration;
 
       var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
-      console.log("isFirefox: ", isFirefox);
 
-      var viewHeight = window.innerHeight - 340;
+      var viewHeight = window.innerHeight - 300;
       if (viewHeight < 420) {
         viewHeight = 420;
       }
       if (isFirefox) {
-        viewHeight = viewHeight - 80;
+        viewHeight = viewHeight - 0;
       }
 
       var viewWidth = window.innerWidth - 60;
       if (viewWidth < 960) {
         viewWidth = 960;
       }
-
-      console.log("viewWidth: ", viewWidth);
 
       $scope.viewWidth = viewWidth;
 
@@ -1016,9 +1013,7 @@ angular
             var el = $compile(
               '<div swappable-statement="cell.statement" swappable-statement-cell="cell" swappable="false" class="swappable" ng-class="{textright: textAlignRight}" style="position: relative;"></div>'
             )(outerScope);
-            console.log("helperWidth: ", scope.helperWidth);
             var w = parseInt(scope.helperWidth, 10) - 8 + "px";
-            console.log("w is: ", w);
             $(el).css("width", w);
             $(element).append(el);
             if (reposition) {
@@ -1119,7 +1114,7 @@ angular
                   var s = scope.$new(true);
                   s.statement = dragElement.initialStatement;
                   var el = $compile(
-                    '<div draggable-statement="statement" clone-on-drag="false" class="destroy-on-place draggable dragging-onto-grid" ng-class="{neutral: statement.category === \'neutral\', agree: statement.category === \'agree\', disagree: statement.category === \'disagree\', textright: textAlignRight}" style="position: relative;" data-placement="bottom" data-toggle="tooltip" data-trigger="hover click" title="{{ statement.__text }} ({{ statement._id }})">{{statement.__text }} <b>({{statement._id}})</b></div>'
+                    '<div draggable-statement="statement" clone-on-drag="false" class="destroy-on-place draggable dragging-onto-grid" ng-class="{neutral: statement.category === \'neutral\', agree: statement.category === \'agree\', disagree: statement.category === \'disagree\', textright: textAlignRight}" style="position: relative;" data-placement="bottom" data-toggle="tooltip" data-trigger="hover click" title="({{ statement._id }}) {{ statement.__text }} "> <span class="idNum">({{statement._id}})</span> {{statement.__text }}</div>'
                   )(s);
                   if (
                     dragElement.smallFont &&
@@ -1152,6 +1147,9 @@ angular
     "$scope",
     "$state",
     function (config, language, UserCode, $http, $scope, $state) {
+      $scope.showNameInput = config.partNameRequired;
+      $scope.user = {};
+
       function getParameterByName(queryString, name) {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
         var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -1223,6 +1221,7 @@ angular
           var correctPw = false;
           if (config.loginPassword && config.loginPassword.length > 0) {
             correctPw = config.loginPassword === code;
+            config.partId = $scope.user.PartName;
           } else {
             correctPw = true;
           }
@@ -1727,6 +1726,11 @@ angular
           }).length,
         };
 
+        if (config.partId === null || config.partId === undefined) {
+          config.partId = "";
+        }
+        ret.participantId = config.partId;
+
         if (UserCode.userCode && UserCode.userCode.length > 0) {
           ret.uid = UserCode.userCode;
         }
@@ -1782,16 +1786,29 @@ angular
             results[i] = "no_response";
           }
         }
-        rootRef.push(results, function (error) {
-          if (error) {
-            $stateParams.retry = 1;
-            $state.go("root.submit", {
-              retry: $stateParams.retry,
+
+        firebase
+          .auth()
+          .signInAnonymously()
+          .then(() => {
+            // Signed in..
+            rootRef.push(results, function (error) {
+              if (error) {
+                $stateParams.retry = 1;
+                $state.go("root.submit", {
+                  retry: $stateParams.retry,
+                });
+              } else {
+                $state.go("root.thanks");
+              }
             });
-          } else {
-            $state.go("root.thanks");
-          }
-        });
+          })
+          .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ...
+            console.log(errorCode, errorMessage);
+          });
       }
 
       $scope.submitViaHttp = function () {
