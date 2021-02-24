@@ -397,7 +397,7 @@ li.disagree {
 }
 
 
-@media screen and (hover: none) and (min-width: 1366px) {
+@media (hover: none) and (min-width: 1366px) {
   .grid td {
     vertical-align: top;
     padding: 0;
@@ -408,12 +408,12 @@ li.disagree {
 }
 
 
-@media screen and (hover: none) and (max-width: 1024px) {
+@media (hover: none) and (max-width: 1024px) {
   .grid td {
     vertical-align: top;
     padding: 0;
     line-height: 1;
-    font-size: 8px;
+    font-size: 10px;
     /* font-size: 0.8vh; */
   }
 }
